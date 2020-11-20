@@ -1,0 +1,33 @@
+Configuration:
+  Appenders:
+    Console:
+      PatternLayout:
+        pattern: '%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n'
+      name: Console
+      target: SYSTEM_OUT
+    RollingFile:
+      - name: File_INFO
+        PatternLayout:
+          pattern: '%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n'
+        fileName: logs/app_info.log
+        filePattern: "logs/archive/app_info.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 10MB
+      - name: File_ERROR
+        PatternLayout:
+          pattern: '%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n'
+        fileName: logs/app_error.log
+        filePattern: "logs/archive/app_error.log.%d{yyyy-MM-dd-hh-mm}.gz"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 10MB
+  Loggers:
+    Root:
+      AppenderRef:
+      - ref: Console
+        level: debug
+      - ref: File_INFO
+        level: info
+      - ref: File_ERROR
+        level: error

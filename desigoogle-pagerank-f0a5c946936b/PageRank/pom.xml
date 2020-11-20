@@ -1,0 +1,163 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.upenn.cis555</groupId>
+	<artifactId>PageRank</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>PageRank</name>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.8.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.8.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.11.538</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-yaml</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-client</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>3.1.0-m1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.0</version>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+		</plugin>
+
+
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>exec-maven-plugin</artifactId>
+			<version>1.6.0</version>
+			<executions>
+				<execution>
+					<id>GIPG</id>
+					<goals><goal>java</goal></goals>
+					<configuration>
+						<mainClass>edu.upenn.cis555.pagerank.GetInitialPageRank</mainClass>
+						<arguments>
+							<argument>"./inp/"</argument>
+							<argument>"./titleDir/"</argument>
+						</arguments>
+					</configuration>
+				</execution>
+				<!--<execution>-->
+					<!--<id>ParseBody</id>-->
+					<!--<goals><goal>java</goal></goals>-->
+					<!--<configuration>-->
+						<!--<mainClass>ParseBody</mainClass>-->
+						<!--<arguments>-->
+							<!--<argument>"./inp/"</argument>-->
+							<!--<argument>"./bodyDir/"</argument>-->
+						<!--</arguments>-->
+					<!--</configuration>-->
+				<!--</execution>-->
+				<!--<execution>-->
+					<!--<id>WordCount</id>-->
+					<!--<goals><goal>java</goal></goals>-->
+					<!--<configuration>-->
+						<!--<mainClass>WordCount</mainClass>-->
+						<!--<arguments>-->
+							<!--<argument>"./titleDir/"</argument>-->
+							<!--<argument>"./outWordCount/"</argument>-->
+						<!--</arguments>-->
+					<!--</configuration>-->
+				<!--</execution>-->
+				<!--<execution>-->
+					<!--<id>MaxFrequency</id>-->
+					<!--<goals><goal>java</goal></goals>-->
+					<!--<configuration>-->
+						<!--<mainClass>MaxFrequency</mainClass>-->
+						<!--<arguments>-->
+							<!--<argument>"./outWordCount/"</argument>-->
+							<!--<argument>"./outMaxFreq/"</argument>-->
+						<!--</arguments>-->
+					<!--</configuration>-->
+				<!--</execution>-->
+				<!--<execution>-->
+					<!--<id>IDF</id>-->
+					<!--<goals><goal>java</goal></goals>-->
+					<!--<configuration>-->
+						<!--<mainClass>IDF</mainClass>-->
+						<!--<arguments>-->
+							<!--<argument>"./titleDir/"</argument>-->
+							<!--<argument>"./outIDF/"</argument>-->
+						<!--</arguments>-->
+					<!--</configuration>-->
+				<!--</execution>-->
+			</executions>
+		</plugin>
+		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>3.1.1</version>
+			<configuration>
+				<descriptorRefs>
+					<descriptorRef>jar-with-dependencies</descriptorRef>
+				</descriptorRefs>
+			</configuration>
+			<executions>
+				<execution>
+					<id>make-assembly</id> <!-- this is used for inheritance merges -->
+					<phase>package</phase> <!-- bind to the packaging phase -->
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+
+		<!--            <plugin>-->
+		<!--            <groupId>org.apache.maven.plugins</groupId>-->
+		<!--            <artifactId>maven-enforcer-plugin</artifactId>-->
+		<!--            <version>1.4.1</version>-->
+		<!--            <configuration>-->
+		<!--                <rules><dependencyConvergence/></rules>-->
+		<!--            </configuration>-->
+		<!--            </plugin>-->
+
+	</plugins>
+	</build>
+
+</project>

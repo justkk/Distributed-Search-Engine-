@@ -1,0 +1,6 @@
+target/*
+app.log
+.idea/*
+.DS_Store
+logs/*
+

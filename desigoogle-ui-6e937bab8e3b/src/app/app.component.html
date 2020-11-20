@@ -1,0 +1,44 @@
+<div class="all100">
+<div class="centered column">
+  
+  <h1 class="centered row"><img height="35%" width="35%" src="../assets/croppedlogo.svg" alt="desigoogle"/></h1>
+
+  <div class="input-bar">
+      <div class="input-bar-item all100">
+      <div class="input-group centered row" [formGroup]="queryFormGroup">
+              <input matInput type="search" class="mat-elevation-z2" [matAutocomplete]="auto" (keyup.enter)="getSearchResults()" formControlName="queryString">
+              <span class="input-group-btn">
+                  <button mat-icon-button matSuffix (click)="getSearchResults()"><mat-icon>search</mat-icon></button>
+              </span>
+         </div>
+      </div>
+  </div>
+
+  <mat-autocomplete #auto="matAutocomplete" class="mat-elevation-z2">
+    <mat-option *ngFor="let item of filteredResults$ | async" [value]="item">
+      <span [innerHTML]="item | bold:searchControl.value"></span>
+    </mat-option>
+  </mat-autocomplete>
+
+<div class="smallspacer">
+</div>
+
+<div class="results" *ngIf="errorHappened">
+  <p>Error fetching results.</p>
+</div>
+
+<div class="results" *ngIf="hasResult && !errorHappened">
+  <h3 style="background-color: rgba(28, 92, 134, 0.87); color:rgba(255, 255, 255, 0.87); font-family: Arial, Helvetica, sans-serif" class="centered row">results</h3>
+  <button mat-icon-button (click)="getPrevPages()" style="float:left"><mat-icon>arrow_back</mat-icon></button>
+  <button mat-icon-button (click)="getNextPages()" style="float:right"><mat-icon>arrow_forward</mat-icon></button>
+  <div class="smallspacer"></div>
+  <div class="centerdiv">
+      <div fxFlex style="margin:20px" *ngFor="let result of results">
+          <search-card [result]="result"></search-card>
+      </div>
+  </div>
+
+</div>
+</div>
+</div>
+

@@ -1,0 +1,11 @@
+<mat-card class="search-card">
+    <mat-card-header style="float:top">
+        <mat-card-title><a href={{result.url}}>{{result.title}}</a></mat-card-title>
+        <mat-card-subtitle><a href={{result.url}} style="color:rgba(67, 95, 49, 0.87)">{{result.url}}</a></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="float:bottom">
+          <p>
+            {{(result.docContent.length>300)?(result.docContent | slice:0:300)+"...":(result.docContent)}}
+          </p>
+    </mat-card-content>
+</mat-card>

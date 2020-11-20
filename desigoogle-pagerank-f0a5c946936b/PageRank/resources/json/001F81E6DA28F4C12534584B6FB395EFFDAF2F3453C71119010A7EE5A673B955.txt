@@ -1,0 +1,1 @@
+{"hostname":"donate.wikimedia.org","childNames":["donate.m.wikimedia.org","foundation.wikimedia.org","donate.wikimedia.org","collab.wikimedia.org"]}

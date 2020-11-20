@@ -1,0 +1,43 @@
+Full name:  Venkata Sai Nikhil Thodupunuri
+SEAS login: tvenkata
+
+Which features did you implement?
+  All MS1 Features
+  Crawling
+  redirects
+  handled chucked encoding
+  Implemented wait-queue for efficiency
+
+Did you complete any extra-credit tasks? If so, which ones?
+  HW1 Server is used for web server --> For MS1 features only.
+  Subscription. User can subscribe channels.
+  Implementation of Statemachine discussed in class.
+
+
+Any special instructions for building and running your solution?
+  Please don't change the pom.xml as it contains the HW1 dependency
+  There are two sets of handlers one for spark and one for HW1 server.
+
+
+
+  To run the HW1 server, Configuration has been already added to pom.xml.
+
+  Build the code by mvn clean install
+  Run the server by : mvn exec:java@webHw1 "-Dexec.args={db path} {root path}". Note that tag for this HW1 server is  webHw1.
+
+  src/main/java/edu/upenn/cis/cis455/crawler/WebInterfaceHw1.java is the main class for HW1 server.
+
+  To run the spark server use mvn exec:java@web "-Dexec.args={db path} {root path}"
+
+Did you personally write _all_ the code you are submitting
+(other than code from the course web page)?
+  [#] Yes
+  [ ] No
+
+Did you copy any code from the Internet, or from classmates?
+  [ ] Yes
+  [#] No
+
+Did you collaborate with anyone on this assignment?
+  [] Yes
+  [#] No [Only discussed the design]

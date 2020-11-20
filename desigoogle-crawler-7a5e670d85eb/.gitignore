@@ -1,0 +1,6 @@
+.idea/
+dbs/
+logs/
+target/
+hw1/
+.DS_Store

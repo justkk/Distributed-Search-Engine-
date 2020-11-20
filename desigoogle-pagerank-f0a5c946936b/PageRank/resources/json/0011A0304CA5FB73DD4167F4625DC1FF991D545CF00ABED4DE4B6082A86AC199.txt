@@ -1,0 +1,1 @@
+{"hostname":"udm.wikipedia.org","childNames":["www.wikidata.org","udm.wikipedia.org","udm.m.wikipedia.org"]}

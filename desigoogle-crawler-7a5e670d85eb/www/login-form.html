@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log in</title>
+    <style>
+        #message {
+           color: red;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Log into Milestone 2</h1>
+<h6 id="message"></h6>
+<p>If you don't have an account, please <a href="register.html">register<a> first.</p>
+
+<form method="POST" action="/login">
+Name: <input type="text" name="username"/><br/>
+Password: <input type="password" name="password"/><br/>
+<input type="submit" value="Log in"/>
+</form>
+
+<script type="text/javascript">
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+document.getElementById("message").innerHTML = getParameterByName('message');
+
+</script>
+
+</body>
+</html>

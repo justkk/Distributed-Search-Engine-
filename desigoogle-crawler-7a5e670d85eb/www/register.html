@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register account</title>
+    <style>
+        #message {
+           color: red;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Create Account for Milestone 2</h1>
+<h6 id="message"></h6>
+<p>Please register a user name and password</p>
+
+<form method="POST" action="/register">
+    User Name: <input type="text" name="username"/><br/>
+    Password: <input type="password" name="password"/><br/>
+    First Name: <input type="text" name="firstname"/><br/>
+    Last Name: <input type="text" name="lastname"/><br/>
+    <input type="submit" value="Create account"/>
+</form>
+
+<script type="text/javascript">
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+document.getElementById("message").innerHTML = getParameterByName('message');
+
+</script>
+
+</body>
+</html>
